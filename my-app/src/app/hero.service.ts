@@ -9,6 +9,12 @@ import { Observable, of } from 'rxjs';
 })
 export class HeroService {
 
+  getHero(id: Number): Observable<Hero> {
+    const hero = HEROES.find(h => h.id === id)!;
+    this.messageService.add('HeroService: fetched heroes');
+    return of(hero);
+  }
+
   getHeroes(): Observable<Hero[]> {
     const heroes = of(HEROES);
     this.messageService.add('HeroService: fetched heroes');
